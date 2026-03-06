@@ -146,18 +146,12 @@
 \begin{center}
 \vspace*{3cm}
 
-\colorbox{darkbg}{%
-    \parbox{\dimexpr\textwidth-2\fboxsep}{%
-        \centering
-        \vspace{2cm}
-        {\color{white}\Huge\bfseries SESSION 2}\\[0.8cm]
-        {\color{white}\Huge\bfseries Kimin \.{I}\c{s}i Ne?}\\[1.2cm]
-        {\color{white}\large Service Katman{\i}, IoC, Dependency Injection \& Strategy Pattern}\\[0.8cm]
-        {\color{accentred}\rule{0.6\textwidth}{2pt}}\\[0.8cm]
-        {\color{white}\normalsize Spring Boot \textbar{} Service Layer \textbar{} DI \textbar{} Design Patterns}\\[0.5cm]
-        \vspace{1.5cm}
-    }%
-}
+{\Huge\bfseries SESSION 2}\\[0.8cm]
+{\Huge\bfseries Kimin \.{I}\c{s}i Ne?}\\[1.2cm]
+{\large Service Katman{\i}, IoC, Dependency Injection \& Strategy Pattern}\\[0.8cm]
+{\color{accentred}\rule{0.6\textwidth}{2pt}}\\[1.2cm]
+{\normalsize\textbf{Umay \c{S}AMLI}}\\[0.3cm]
+{\small \href{mailto:umay.samli@infinitumit.com.tr}{umay.samli@infinitumit.com.tr} \textbar{} \href{mailto:samliumay965@gmail.com}{samliumay965@gmail.com}}\\[1.5cm]
 
 \vfill
 {\small\color{gray}\rule{0.5\textwidth}{0.5pt}}
@@ -179,8 +173,6 @@
     \item \textbf{Problemi Tan{\i}yal{\i}m: if-else Zinciri}
     \item \textbf{Strategy Pattern: De\u{g}i\c{s}en Davran{\i}\c{s}{\i} Y\"{o}netmek}
     \item \textbf{Open/Closed Principle (SOLID)}
-    \item \textbf{Di\u{g}er Tasar{\i}m Kal{\i}plar{\i}na K{\i}sa Bak{\i}\c{s}}
-    \item \textbf{Controller'a Giri\c{s}: HTTP Kap{\i}s{\i}n{\i} Aralamak}
     \item \textbf{Pratik}
     \item \textbf{\"{O}zet}
 \end{enumerate}
@@ -432,14 +424,13 @@ public class TaskService {
 
 \subsubsection*{2. Field Injection \textcolor{red}{(\"{O}nerilmez)}}
 
-\texttt{@Autowired} ile do\u{g}rudan alana enjekte edilir. Alan \texttt{final} yap{\i}lamaz, test i\c{c}in mock vermek zordur.
+\texttt{@Autowired} ile do\u{g}rudan alana enjekte edilir. Test i\c{c}in mock vermek zordur.
 
 \begin{lstlisting}[style=java]
 @Service
 public class TaskService {
     @Autowired  // Spring dogrudan alana enjekte eder
     private TaskRepository taskRepository;
-    // final yapamazsiniz, test icin mock vermek zor
 }
 \end{lstlisting}
 
@@ -584,32 +575,6 @@ public enum TaskStatus {
 \texttt{ORDINAL} kullansayd{\i}n{\i}z, veritaban{\i}nda \texttt{2} olarak kay{\i}tl{\i} t\"{u}m \texttt{DONE} sat{\i}rlar{\i} art{\i}k \texttt{CANCELLED} olarak okunurdu. Veri sessizce bozulur, hata bile almadan. \texttt{STRING} ile \texttt{"DONE"} her zaman \texttt{"DONE"} kal{\i}r --- enum s{\i}ras{\i} de\u{g}i\c{s}se bile. Bu y\"{u}zden her zaman \texttt{EnumType.STRING} kullan{\i}n.
 \end{dangerbox}
 
-\subsection*{Entity'lerde @Data Kullanmay{\i}n!}
-
-\begin{dangerbox}
-Yeni ba\c{s}layanlar{\i}n en s{\i}k yapt{\i}\u{g}{\i} hata: Entity s{\i}n{\i}f{\i}na \texttt{@Data} koymak. \texttt{@Data}, arka planda \texttt{equals()} ve \texttt{hashCode()} metodlar{\i}n{\i} t\"{u}m alanlar{\i} kullanarak \"{u}retir. Bu iki ciddi soruna yol a\c{c}ar:
-
-\begin{enumerate}
-    \item \textbf{Lazy-loaded ili\c{s}kiler (\texttt{LazyInitializationException}):} \texttt{@Data}'n{\i}n \"{u}retti\u{g}i \texttt{toString()} metodu \textbf{t\"{u}m alanlar{\i}} okur --- LAZY ili\c{s}kiler dahil. Normalde LAZY ili\c{s}kiler sadece siz eri\c{s}ti\u{g}inizde y\"{u}klenir. Ama \texttt{toString()} t\"{u}m alanlara eri\c{s}ti\u{g}i i\c{c}in Hibernate bu verileri veritaban{\i}ndan \c{c}ekmeye \c{c}al{\i}\c{s}{\i}r. E\u{g}er bu an transaction kapanm{\i}\c{s}sa (mesela Controller'a d\"{o}nd\"{u}kten sonra), Hibernate veritaban{\i}na gidemez ve \texttt{LazyInitializationException} f{\i}rlar.
-
-    \item \textbf{Sonsuz d\"{o}ng\"{u} (\texttt{StackOverflowError}):} \.{I}ki entity birbirine referans veriyorsa (Task $\leftrightarrow$ Comment), \texttt{toString()} \c{s}\"{o}yle \c{c}al{\i}\c{s}{\i}r: Task'{\i}n \texttt{toString()}'i Comment listesini yazmaya \c{c}al{\i}\c{s}{\i}r $\rightarrow$ her Comment'in \texttt{toString()}'i kendi Task'{\i}n{\i} yazmaya \c{c}al{\i}\c{s}{\i}r $\rightarrow$ o Task tekrar Comment'leri yazmaya \c{c}al{\i}\c{s}{\i}r $\rightarrow$ \ldots{} sonsuz d\"{o}ng\"{u}. JVM stack'i dolar ve \texttt{StackOverflowError} al{\i}rs{\i}n{\i}z.
-\end{enumerate}
-
-Do\u{g}ru yakla\c{s}{\i}m: Entity'lerde \texttt{@Getter} ve \texttt{@Setter} ayr{\i} ayr{\i} kullan{\i}n. \texttt{@Data} yerine sadece ihtiyac{\i}n{\i}z olan annotation'lar{\i} koyun.
-\end{dangerbox}
-
-\begin{lstlisting}[style=java]
-// YANLIS --- Entity'de @Data
-@Data   // equals, hashCode, toString TEHLIKELI!
-@Entity
-public class Task { ... }
-
-// DOGRU --- Sadece ihtiyaciniz olanlari kullanin
-@Getter
-@Setter
-@Entity
-public class Task { ... }
-\end{lstlisting}
 
 \subsection*{@RequiredArgsConstructor ile DI}
 
@@ -872,10 +837,7 @@ public class SortByPriority implements TaskSortStrategy {
 
 Spring, yeni \texttt{@Component}'i otomatik olarak \texttt{sortStrategies} Map'ine ekler. Service kodu de\u{g}i\c{s}mez, test edilmi\c{s} kod bozulmaz.
 
-\begin{tipbox}
-Strategy Pattern'in Spring Boot ile kullan{\i}m{\i}n{\i} daha detayl{\i} incelemek isterseniz:\\
-\url{https://medium.com/codex/implementing-the-strategy-design-pattern-in-spring-boot-df3adb9ceb4a}
-\end{tipbox}
+Strategy Pattern'in Spring Boot ile kullan{\i}m{\i}n{\i} daha detayl{\i} incelemek isterseniz \cite{strategy-spring-boot} kayna\u{g}{\i}na bakabilirsiniz.
 
 \newpage
 
@@ -1043,5 +1005,12 @@ Bunu do\u{g}ru yazd{\i}\u{g}{\i}n{\i}zda \texttt{TaskService}'e \textbf{tek sat{
 \bottomrule
 \end{tabular}
 \end{center}
+
+\begin{thebibliography}{9}
+\bibitem{strategy-spring-boot}
+Implementing the Strategy Design Pattern in Spring Boot,
+\textit{Medium -- Codex},
+\url{https://medium.com/codex/implementing-the-strategy-design-pattern-in-spring-boot-df3adb9ceb4a}
+\end{thebibliography}
 
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.5)  6 MAR 2026 12:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.5)  6 MAR 2026 13:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -618,12 +618,6 @@ Package hyperref Info: Link coloring OFF on input line 142.
 \@outlinefile=\write4
 \openout4 = `session2_deep_dive.out'.
 
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 160.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 160.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 160.
  [1
 
 {c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
@@ -635,6 +629,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.15405pt}.
 
 [2]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 194.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 194.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 194.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 12.15405pt, for example:
@@ -643,7 +644,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.15405pt}.
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 235--236
+Underfull \hbox (badness 10000) in paragraph at lines 227--228
 []|\T1/cmr/m/n/10.95 Veritaban^^Y CRUD i≥lemlerini gerÁekle≥tirir.
  []
 
@@ -656,9 +657,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [4]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 274.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 266.
 
-Underfull \hbox (badness 10000) in paragraph at lines 293--293
+Underfull \hbox (badness 10000) in paragraph at lines 285--285
 []|\T1/cmr/m/n/10.95 50 nesneyi doßru s^^Yrayla siz
  []
 
@@ -670,22 +671,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.15405pt}.
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 323--324
+Underfull \hbox (badness 10000) in paragraph at lines 315--316
 []|\T1/cmr/m/n/10.95 Service katman^^Y bean'i. \T1/cmtt/m/n/10.95 @Component\T1/cmr/m/n/10.95 'in
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 324--325
+Underfull \hbox (badness 10000) in paragraph at lines 316--317
 []|\T1/cmr/m/n/10.95 Repository katman^^Y bean'i. Veritaban^^Y
  []
 
 
-Underfull \hbox (badness 1845) in paragraph at lines 350--351
+Underfull \hbox (badness 1845) in paragraph at lines 342--343
 []|\T1/cmr/m/n/10.95 T¸m uygulama boyunca tek bir
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 351--352
+Underfull \hbox (badness 10000) in paragraph at lines 343--344
 []|\T1/cmr/m/n/10.95 Her \T1/cmtt/m/n/10.95 getBean() \T1/cmr/m/n/10.95 Áaßr^^Ys^^Ynda yeni
  []
 
@@ -697,7 +698,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.15405pt}.
 
 [6]
-Overfull \hbox (22.19753pt too wide) in paragraph at lines 401--402
+Overfull \hbox (22.19753pt too wide) in paragraph at lines 393--394
 []\T1/cmtt/m/n/10.95 TaskService\T1/cmr/m/n/10.95 , \T1/cmtt/m/n/10.95 TaskRepository\T1/cmr/m/n/10.95 'nin nas^^Yl olu≥turuldußunu bilmiyor. Sadece ``bana bir \T1/cmtt/m/n/10.95 TaskRepository
  []
 
@@ -717,14 +718,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.15405pt}.
 
 [8]
-Overfull \hbox (5.97472pt too wide) in paragraph at lines 517--518
+Overfull \hbox (5.97472pt too wide) in paragraph at lines 508--509
 \T1/cmr/m/n/10.95 Bu kodda Lombok d^^Y≥^^Ynda birkaÁ JPA annotation'^^Y var. Her birinin ne yapt^^Yß^^Yn^^Y tek tek inceleyelim. 
  []
 
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 519.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 510.
 
-Overfull \hbox (53.56519pt too wide) in paragraph at lines 526--536
+Overfull \hbox (53.56519pt too wide) in paragraph at lines 517--527
  [] 
  []
 
@@ -736,10 +737,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.15405pt}.
 
 [9]
-Underfull \hbox (badness 2245) in paragraph at lines 593--594
-[]\T1/cmr/bx/n/10.95 Lazy-loaded ili≥kiler (\T1/cmtt/m/n/10.95 LazyInitializationException\T1/cmr/bx/n/10.95 ): \T1/cmtt/m/n/10.95 @Data\T1/cmr/m/n/10.95 'n^^Yn ¸rettißi
- []
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 12.15405pt, for example:
@@ -756,15 +753,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.15405pt}.
 
 [11]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.15405pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.15405pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.15405pt}.
-
-[12]
-Overfull \hbox (1.06573pt too wide) in paragraph at lines 699--700
+Overfull \hbox (1.06573pt too wide) in paragraph at lines 664--665
 []\T1/cmtt/m/n/10.95 createTask\T1/cmr/m/n/10.95 : Yeni bir \T1/cmtt/m/n/10.95 Task \T1/cmr/m/n/10.95 nesnesi olu≥turur, varsay^^Ylan deßerleri set eder ve kaydeder. Varsay^^Ylan
  []
 
@@ -775,16 +764,24 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.15405pt}.
 
-[13]
-Overfull \hbox (5.98993pt too wide) in paragraph at lines 716--717
+[12]
+Overfull \hbox (5.98993pt too wide) in paragraph at lines 681--682
 []\T1/cmtt/m/n/10.95 getTasks\T1/cmr/m/n/10.95 : S^^Yralama stratejisini Map'ten seÁer ve uygular. Bu metodu Strategy Pattern bˆl¸m¸nde
  []
 
 
-Underfull \hbox (badness 1163) in paragraph at lines 725--726
+Underfull \hbox (badness 1163) in paragraph at lines 690--691
 []\T1/cmtt/m/n/10.95 orElseThrow \T1/cmr/m/n/10.95 iÁinde \T1/cmtt/m/n/10.95 RuntimeException \T1/cmr/m/n/10.95 kullanmak ≥imdilik yeterli. Ancak gerÁek
  []
 
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.15405pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.15405pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.15405pt}.
+
+[13]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 12.15405pt, for example:
@@ -801,6 +798,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.15405pt}.
 
 [15]
+Overfull \hbox (4.70909pt too wide) in paragraph at lines 838--839
+[]\T1/cmr/m/n/10.95 Spring, yeni \T1/cmtt/m/n/10.95 @Component\T1/cmr/m/n/10.95 'i otomatik olarak \T1/cmtt/m/n/10.95 sortStrategies \T1/cmr/m/n/10.95 Map'ine ekler. Service kodu deßi≥mez,
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 12.15405pt, for example:
@@ -809,24 +810,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.15405pt}.
 
 [16]
-Overfull \hbox (4.70909pt too wide) in paragraph at lines 873--874
-[]\T1/cmr/m/n/10.95 Spring, yeni \T1/cmtt/m/n/10.95 @Component\T1/cmr/m/n/10.95 'i otomatik olarak \T1/cmtt/m/n/10.95 sortStrategies \T1/cmr/m/n/10.95 Map'ine ekler. Service kodu deßi≥mez,
- []
-
-
-Overfull \hbox (106.28233pt too wide) in paragraph at lines 876--878
-[]$\T1/cmtt/m/n/10.95 https : / / medium . com / codex / implementing-[]the-[]strategy-[]design-[]pattern-[]in-[]spring-[]boot-[]df3adb9ceb4a$[] 
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.15405pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.15405pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.15405pt}.
-
-[17]
-Underfull \hbox (badness 1092) in paragraph at lines 899--899
+Underfull \hbox (badness 1092) in paragraph at lines 861--861
 []|\T1/cmr/m/n/10.95 Yeni s^^Yralama = mevcut metodu
  []
 
@@ -837,8 +821,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.15405pt}.
 
-[18]
-Overfull \hbox (2.39592pt too wide) in paragraph at lines 991--992
+[17]
+Overfull \hbox (2.39592pt too wide) in paragraph at lines 953--954
 []\T1/cmtt/m/n/10.95 TaskService\T1/cmr/m/n/10.95 , \T1/cmtt/m/n/10.95 SortByDate \T1/cmr/m/n/10.95 veya \T1/cmtt/m/n/10.95 SortByTitle\T1/cmr/m/n/10.95 '^^Y bilmiyor --- sadece \T1/cmtt/m/n/10.95 TaskSortStrategy \T1/cmr/m/n/10.95 interface'ini
  []
 
@@ -849,13 +833,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.15405pt}.
 
-[19]
-Overfull \hbox (8.34666pt too wide) in paragraph at lines 1004--1005
+[18]
+Overfull \hbox (8.34666pt too wide) in paragraph at lines 966--967
 \T1/cmtt/m/n/10.95 TaskService \T1/cmr/m/n/10.95 s^^Yn^^Yf^^Yn^^Y \T1/cmtt/m/n/10.95 @RequiredArgsConstructor \T1/cmr/m/n/10.95 ile yaz^^Yn. T¸m CRUD metodlar^^Yn^^Y (\T1/cmtt/m/n/10.95 createTask\T1/cmr/m/n/10.95 ,
  []
 
 
-Overfull \hbox (19.12671pt too wide) in paragraph at lines 1008--1009
+Overfull \hbox (19.12671pt too wide) in paragraph at lines 970--971
 \T1/cmtt/m/n/10.95 SortByStatus \T1/cmr/m/n/10.95 ad^^Ynda ¸Á¸nc¸ bir strateji yaz^^Yn. S^^Yralama mant^^Yß^^Y: ˆnce \T1/cmtt/m/n/10.95 PENDING\T1/cmr/m/n/10.95 , sonra \T1/cmtt/m/n/10.95 IN_PROGRESS\T1/cmr/m/n/10.95 ,
  []
 
@@ -866,39 +850,44 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.15405pt}.
 
-[20]
-Underfull \hbox (badness 2435) in paragraph at lines 1036--1037
+[19]
+Underfull \hbox (badness 2435) in paragraph at lines 998--999
 []|\T1/cmr/m/n/10.95 ù≥ mant^^Yß^^Yn^^Yn evidir. Controller ile Repository
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1038--1038
+Underfull \hbox (badness 10000) in paragraph at lines 1000--1000
 []|\T1/cmr/bx/n/10.95 Dependency
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1038--1039
+Underfull \hbox (badness 10000) in paragraph at lines 1000--1001
 []|\T1/cmr/m/n/10.95 Baß^^Yml^^Yl^^Yklar d^^Y≥ar^^Ydan verilir. Constructor
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1038--1039
+Underfull \hbox (badness 10000) in paragraph at lines 1000--1001
 \T1/cmr/m/n/10.95 Injection en temiz yˆntemdir. \T1/cmtt/m/n/10.95 final \T1/cmr/m/n/10.95 +
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1039--1040
+Underfull \hbox (badness 10000) in paragraph at lines 1001--1002
 []|\T1/cmtt/m/n/10.95 @Component \T1/cmr/m/n/10.95 t¸revleri bean olarak kaydedilir.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1040--1041
+Underfull \hbox (badness 10000) in paragraph at lines 1002--1003
 []|\T1/cmr/m/n/10.95 Boilerplate kodu ortadan kald^^Yr^^Yr.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1040--1041
+Underfull \hbox (badness 10000) in paragraph at lines 1002--1003
 \T1/cmr/m/n/10.95 Entity'lerde \T1/cmtt/m/n/10.95 @Getter\T1/cmr/m/n/10.95 /\T1/cmtt/m/n/10.95 @Setter\T1/cmr/m/n/10.95 , Service'lerde
+ []
+
+
+Overfull \hbox (46.68855pt too wide) in paragraph at lines 1011--1014
+\T1/cmtt/m/n/10.95 medium . com / codex / implementing-[]the-[]strategy-[]design-[]pattern-[]in-[]spring-[]boot-[]df3adb9ceb4a$[] 
  []
 
 
@@ -908,34 +897,27 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.15405pt}.
 
-[21] (./session2_deep_dive.aux)
+[20] (./session2_deep_dive.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
-
-
-Package rerunfilecheck Warning: File `session2_deep_dive.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `session2_deep_dive.out':
-(rerunfilecheck)             Before: D41D8CD98F00B204E9800998ECF8427E;0
-(rerunfilecheck)             After:  3049EE418CECF0B2EF15422EA96493C7;2480.
+Package rerunfilecheck Info: File `session2_deep_dive.out' has not changed.
+(rerunfilecheck)             Checksum: 3049EE418CECF0B2EF15422EA96493C7;2480.
  ) 
 Here is how much of TeX's memory you used:
  27466 strings out of 469454
- 539404 string characters out of 5465427
+ 539453 string characters out of 5465427
  1287072 words of memory out of 5000000
- 55387 multiletter control sequences out of 15000+600000
+ 55403 multiletter control sequences out of 15000+600000
  640831 words of font info for 65 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  98i,13n,108p,1207b,2100s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecit1000.600pk> <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk> <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk> <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk> <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk><c:/Users/moses/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on session2_deep_dive.pdf (21 pages, 255956 bytes).
+ <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecit1000.600pk> <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1095.600pk> <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk> <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk> <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk> <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> <c:/Users/moses/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk><c:/Users/moses/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on session2_deep_dive.pdf (20 pages, 258496 bytes).
 PDF statistics:
- 1147 PDF objects out of 1200 (max. 8388607)
- 541 compressed objects within 6 object streams
- 359 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1184 PDF objects out of 1200 (max. 8388607)
+ 562 compressed objects within 6 object streams
+ 343 named destinations out of 1000 (max. 500000)
+ 109 words of extra memory for PDF output out of 10000 (max. 10000000)
 
