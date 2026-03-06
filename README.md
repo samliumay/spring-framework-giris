@@ -1,4 +1,4 @@
-# Spring Boot Intern Training - Task Manager API
+# Spring Boot Intern Eğitimi - Task Manager API
 
 @**InfinitumIT** staj eğitim serisi. Spring Boot ile katmanlı mimari, design pattern'ler ve best practice'ler üzerine haftalık oturumlar.
 
@@ -37,9 +37,6 @@ project/
 cd project/back-end
 ./mvnw spring-boot:run
 ```
-
-H2 Console: http://localhost:8080/h2-console
-JDBC URL: `jdbc:h2:mem:taskdb`
 
 ## Referans Doküman
 
