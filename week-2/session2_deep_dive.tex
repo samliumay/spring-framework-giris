@@ -1,0 +1,1047 @@
+\documentclass[11pt,a4paper]{article}
+
+% ===== PACKAGES =====
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\babelprovide[main, import]{turkish}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{tcolorbox}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{array}
+\usepackage{longtable}
+
+% ===== PAGE SETUP =====
+\geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+
+% ===== COLORS =====
+\definecolor{darkbg}{HTML}{2D2D3D}
+\definecolor{accentred}{HTML}{E74C3C}
+\definecolor{codeblock}{HTML}{F5F5F5}
+\definecolor{codeborder}{HTML}{DDDDDD}
+\definecolor{warnbg}{HTML}{FFF3CD}
+\definecolor{warnborder}{HTML}{FFCC02}
+\definecolor{tipbg}{HTML}{D4EDDA}
+\definecolor{tipborder}{HTML}{28A745}
+\definecolor{infobg}{HTML}{D1ECF1}
+\definecolor{infoborder}{HTML}{17A2B8}
+\definecolor{dangerbg}{HTML}{F8D7DA}
+\definecolor{dangerborder}{HTML}{DC3545}
+\definecolor{keywordcolor}{HTML}{0000FF}
+\definecolor{stringcolor}{HTML}{008000}
+\definecolor{commentcolor}{HTML}{808080}
+\definecolor{annotationcolor}{HTML}{808000}
+
+% ===== CODE LISTINGS =====
+\lstdefinestyle{java}{
+    language=Java,
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{codeblock},
+    frame=single,
+    rulecolor=\color{codeborder},
+    keywordstyle=\color{keywordcolor}\bfseries,
+    stringstyle=\color{stringcolor},
+    commentstyle=\color{commentcolor}\itshape,
+    moredelim=[s][\color{annotationcolor}]{@}{\ },
+    moredelim=[s][\color{annotationcolor}]{@}{(},
+    moredelim=[l][\color{annotationcolor}]{@},
+    showstringspaces=false,
+    breaklines=true,
+    tabsize=4,
+    xleftmargin=0.5cm,
+    xrightmargin=0.5cm,
+    aboveskip=0.5cm,
+    belowskip=0.5cm,
+    numbers=none,
+    escapeinside={(*@}{@*)},
+    literate={ı}{{\i}}1 {İ}{\.{I}}1 {ö}{{\"o}}1 {Ö}{{\"O}}1 {ü}{{\"u}}1 {Ü}{{\"U}}1 {ş}{{\c{s}}}1 {Ş}{{\c{S}}}1 {ç}{{\c{c}}}1 {Ç}{{\c{C}}}1 {ğ}{{\u{g}}}1 {Ğ}{{\u{G}}}1
+}
+
+\lstdefinestyle{properties}{
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{codeblock},
+    frame=single,
+    rulecolor=\color{codeborder},
+    showstringspaces=false,
+    breaklines=true,
+    xleftmargin=0.5cm,
+    xrightmargin=0.5cm,
+    aboveskip=0.5cm,
+    belowskip=0.5cm,
+    commentstyle=\color{commentcolor}\itshape,
+    morecomment=[l]{\#},
+    literate={ı}{{\i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1 {ş}{{\c{s}}}1 {ç}{{\c{c}}}1 {ğ}{{\u{g}}}1
+}
+
+\lstset{style=java}
+
+% ===== TCOLORBOX STYLES =====
+\tcbuselibrary{skins, breakable}
+
+\newtcolorbox{warningbox}[1][]{
+    colback=warnbg,
+    colframe=warnborder,
+    fonttitle=\bfseries,
+    title={D\.{I}KKAT:},
+    breakable,
+    #1
+}
+
+\newtcolorbox{tipbox}[1][]{
+    colback=tipbg,
+    colframe=tipborder,
+    fonttitle=\bfseries,
+    title={\.{I}PUCU:},
+    breakable,
+    #1
+}
+
+\newtcolorbox{infobox}[1][]{
+    colback=infobg,
+    colframe=infoborder,
+    fonttitle=\bfseries,
+    breakable,
+    #1
+}
+
+\newtcolorbox{dangerbox}[1][]{
+    colback=dangerbg,
+    colframe=dangerborder,
+    fonttitle=\bfseries,
+    title={D\.{I}KKAT:},
+    breakable,
+    #1
+}
+
+% ===== HEADER/FOOTER =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textit{Session 2: Kimin \.{I}\c{s}i Ne?}}
+\fancyfoot[R]{\small Sayfa \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% ===== TITLE FORMAT =====
+\titleformat{\section}
+    {\LARGE\bfseries}
+    {\thesection.}{0.5em}{}
+
+\titleformat{\subsection}
+    {\Large\bfseries}
+    {\thesubsection}{0.5em}{}
+
+% ===== DOCUMENT =====
+\begin{document}
+
+% ===== COVER PAGE =====
+\thispagestyle{empty}
+\begin{center}
+\vspace*{3cm}
+
+\colorbox{darkbg}{%
+    \parbox{\dimexpr\textwidth-2\fboxsep}{%
+        \centering
+        \vspace{2cm}
+        {\color{white}\Huge\bfseries SESSION 2}\\[0.8cm]
+        {\color{white}\Huge\bfseries Kimin \.{I}\c{s}i Ne?}\\[1.2cm]
+        {\color{white}\large Service Katman{\i}, IoC, Dependency Injection \& Strategy Pattern}\\[0.8cm]
+        {\color{accentred}\rule{0.6\textwidth}{2pt}}\\[0.8cm]
+        {\color{white}\normalsize Spring Boot \textbar{} Service Layer \textbar{} DI \textbar{} Design Patterns}\\[0.5cm]
+        \vspace{1.5cm}
+    }%
+}
+
+\vfill
+{\small\color{gray}\rule{0.5\textwidth}{0.5pt}}
+\end{center}
+
+\newpage
+
+% ===== TABLE OF CONTENTS =====
+\section*{\.{I}\c{c}indekiler}
+
+\begin{enumerate}[leftmargin=1.5cm]
+    \item \textbf{Giri\c{s}: \.{I}\c{s} Mant{\i}\u{g}{\i} Nereye Yaz{\i}l{\i}r?}
+    \item \textbf{Service Katman{\i}: Mimarideki Rol\"{u}}
+    \item \textbf{IoC: Kontrolün Tersine D\"{o}nmesi}
+    \item \textbf{Spring IoC Container \& Bean Ya\c{s}am D\"{o}ng\"{u}s\"{u}}
+    \item \textbf{Dependency Injection Derinlemesine}
+    \item \textbf{Lombok: Boilerplate Koddan Kurtulmak}
+    \item \textbf{TaskService: CRUD \.{I}\c{s} Mant{\i}\u{g}{\i}}
+    \item \textbf{Problemi Tan{\i}yal{\i}m: if-else Zinciri}
+    \item \textbf{Strategy Pattern: De\u{g}i\c{s}en Davran{\i}\c{s}{\i} Y\"{o}netmek}
+    \item \textbf{Open/Closed Principle (SOLID)}
+    \item \textbf{Di\u{g}er Tasar{\i}m Kal{\i}plar{\i}na K{\i}sa Bak{\i}\c{s}}
+    \item \textbf{Controller'a Giri\c{s}: HTTP Kap{\i}s{\i}n{\i} Aralamak}
+    \item \textbf{Pratik}
+    \item \textbf{\"{O}zet}
+\end{enumerate}
+
+\newpage
+
+% =========================================================================
+% SECTION 1
+% =========================================================================
+\section{Giri\c{s}: \.{I}\c{s} Mant{\i}\u{g}{\i} Nereye Yaz{\i}l{\i}r?}
+
+Ge\c{c}en oturumda Entity ve Repository'yi g\"{o}rd\"{u}k. Veriyi nas{\i}l temsil edece\u{g}imizi ve veritaban{\i}na nas{\i}l konu\c{s}aca\u{g}{\i}m{\i}z{\i} \"{o}\u{g}rendik. Bug\"{u}n \c{s}u soruyu yan{\i}tlayaca\u{g}{\i}z: \textbf{i\c{s} mant{\i}\u{g}{\i} nereye yaz{\i}l{\i}r?}
+
+``\.{I}\c{s} mant{\i}\u{g}{\i}'' soyut bir kavram gibi duyuluyor. Somutla\c{s}t{\i}ral{\i}m:
+
+\begin{itemize}
+    \item ``Bir g\"{o}rev tamamland{\i}\u{g}{\i}nda, olu\c{s}turulma tarihinden 7 g\"{u}nden fazla ge\c{c}mi\c{s}se y\"{o}neticiye bildirim g\"{o}nder.''
+    \item ``Bir kullan{\i}c{\i} ayn{\i} ba\c{s}l{\i}kla ikinci bir g\"{o}rev olu\c{s}turamaz.''
+    \item ``G\"{o}rev durumu sadece PENDING $\rightarrow$ IN\_PROGRESS $\rightarrow$ DONE s{\i}ras{\i}yla ilerleyebilir.''
+\end{itemize}
+
+Bunlar{\i}n hepsi \textbf{i\c{s} kurallar{\i}}. Peki bu kurallar kodun hangi katman{\i}na girer?
+
+Controller'a m{\i}? \textbf{Hay{\i}r} --- Controller'{\i}n i\c{s}i HTTP iste\u{g}ini kar\c{s}{\i}lamak. Repository'ye mi? \textbf{Kesinlikle hay{\i}r} --- Repository sadece veritaban{\i}yla konu\c{s}ur. Cevap: \textbf{Service}.
+
+\begin{infobox}[title={\textbf{Bu Session'da \"{O}\u{g}renecekleriniz}}]
+IoC prensibi ve Spring IoC Container \textbullet{} Dependency Injection mekanizmas{\i} \textbullet{} Bean ya\c{s}am d\"{o}ng\"{u}s\"{u} \textbullet{} Lombok ile temiz kod \textbullet{} Service katman{\i}n{\i}n sorumlulu\u{g}u \textbullet{} Strategy Pattern ve Open/Closed Principle \textbullet{} Controller'a giri\c{s}
+\end{infobox}
+
+\newpage
+
+% =========================================================================
+% SECTION 2
+% =========================================================================
+\section{Service Katman{\i}: Mimarideki Rol\"{u}}
+
+Ge\c{c}en hafta \c{c}izdi\u{g}imiz katmanl{\i} mimari \c{s}emas{\i}n{\i} hat{\i}rlay{\i}n:
+
+\begin{center}
+\texttt{Controller $\rightarrow$ Service $\rightarrow$ Repository $\rightarrow$ Database}
+\end{center}
+
+Service katman{\i}, \textbf{Controller ile Repository aras{\i}ndaki k\"{o}pr\"{u}d\"{u}r}. Ama sadece bir ge\c{c}it de\u{g}ildir --- \textbf{karar mekanizmas{\i}d{\i}r}.
+
+\begin{center}
+\begin{tabular}{lp{9cm}}
+\toprule
+\textbf{Katman} & \textbf{Ne Yapar?} \\
+\midrule
+Controller & HTTP iste\u{g}ini al{\i}r, Service'e iletir, yan{\i}t{\i} d\"{o}ner. \textit{Trafik polisi.} \\
+\textbf{Service} & \textbf{\.{I}\c{s} kurallar{\i}n{\i} uygular, kararlar verir, i\c{s}lemleri koordine eder.} \\
+Repository & Veritaban{\i} CRUD i\c{s}lemlerini ger\c{c}ekle\c{s}tirir. \textit{Veritaban{\i}n{\i}n terc\"{u}man{\i}.} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Service Ne Yapar, Ne Yapmaz?}
+
+\begin{center}
+\begin{tabular}{p{7cm}p{7cm}}
+\toprule
+\textbf{Service'in \.{I}\c{s}i} & \textbf{Service'in \.{I}\c{s}i DE\u{G}\.{I}L} \\
+\midrule
+Yeni g\"{o}rev olu\c{s}turma mant{\i}\u{g}{\i} & HTTP status code belirlemek \\
+Durum ge\c{c}i\c{s} kurallar{\i}n{\i} uygulamak & JSON parse/serialize etmek \\
+Birden fazla Repository'yi koordine etmek & SQL sorgusu yazmak \\
+Validasyon kurallar{\i}n{\i} uygulamak & Request/Response format{\i}n{\i} bilmek \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{dangerbox}
+Service katman{\i}nda asla \texttt{HttpServletRequest}, \texttt{@RequestParam} veya \texttt{ResponseEntity} gibi HTTP kavramlar{\i} bulunmamal{\i}d{\i}r. Service, HTTP'nin varl{\i}\u{g}{\i}ndan haberdar olmamal{\i}d{\i}r. Yar{\i}n ayn{\i} i\c{s} mant{\i}\u{g}{\i}n{\i} bir message queue veya scheduled job'dan \c{c}a\u{g}{\i}rmak istedi\u{g}inizde Service'in de\u{g}i\c{s}memesi gerekir.
+\end{dangerbox}
+
+\newpage
+
+% =========================================================================
+% SECTION 3
+% =========================================================================
+\section{IoC: Kontrol\"{u}n Tersine D\"{o}nmesi}
+
+Service'i yazmaya ba\c{s}lamadan \"{o}nce temel bir prensibi anlamam{\i}z gerekiyor: \textbf{Inversion of Control (IoC)} --- Kontrol\"{u}n Tersine D\"{o}nmesi.
+
+\subsection*{Normal Ak{\i}\c{s}: Kontrol Sizde}
+
+Normalde bir program yazd{\i}\u{g}{\i}n{\i}zda \textbf{kontrol sizdedir}. Hangi nesneyi ne zaman olu\c{s}turaca\u{g}{\i}n{\i}za, ne zaman \c{c}a\u{g}{\i}raca\u{g}{\i}n{\i}za, ne zaman yok edece\u{g}inize siz karar verirsiniz:
+
+\begin{lstlisting}[style=java]
+// Kontrol bizde --- her seyi biz yonetiyoruz
+TaskRepository repo = new TaskRepository();
+TaskService service = new TaskService(repo);
+Task task = service.createTask("Rapor yaz");
+\end{lstlisting}
+
+Bu k\"{u}\c{c}\"{u}k projelerde i\c{s}e yarar. Ama proje b\"{u}y\"{u}d\"{u}k\c{c}e d\"{u}\c{s}\"{u}n\"{u}n: 50 s{\i}n{\i}f var, her biri 3-4 ba\u{g}{\i}ml{\i}l{\i}\u{g}a ihtiya\c{c} duyuyor, ba\u{g}{\i}ml{\i}l{\i}klar{\i}n ba\u{g}{\i}ml{\i}l{\i}klar{\i} var\ldots{} T\"{u}m bu nesneleri do\u{g}ru s{\i}rayla olu\c{s}turmak ve birbirine ba\u{g}lamak kabus olur.
+
+\subsection*{IoC Prensibi: Kontrol\"{u} Devret}
+
+IoC \c{s}unu s\"{o}yl\"{u}yor: \textbf{nesnelerin olu\c{s}turulmas{\i} ve y\"{o}netimi senin i\c{s}in de\u{g}il.} Bu sorumlulu\u{g}u bir \textbf{framework'e} (bizim durumumuzda Spring'e) devret. Sen sadece ``neye ihtiyac{\i}m var'' s\"{o}yle, gerisini framework halletsin.
+
+\begin{center}
+\begin{tabular}{p{6cm}p{6.5cm}}
+\toprule
+\textbf{IoC Olmadan} & \textbf{IoC ile} \\
+\midrule
+\texttt{new TaskRepository()} & Framework olu\c{s}turur \\
+\texttt{new TaskService(repo)} & Framework ba\u{g}lar \\
+Ya\c{s}am d\"{o}ng\"{u}s\"{u}n\"{u} siz y\"{o}netirsiniz & Framework y\"{o}netir \\
+50 nesneyi do\u{g}ru s{\i}rayla siz olu\c{s}turursunuz & Framework ba\u{g}{\i}ml{\i}l{\i}k a\u{g}ac{\i}n{\i} \c{c}\"{o}zer \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+IoC bir \textbf{prensiptir}, belirli bir teknoloji de\u{g}ildir. Spring bu prensibi \textbf{IoC Container} ad{\i} verilen bir yap{\i}yla hayata ge\c{c}irir. Nesne olu\c{s}turma, ya\c{s}am d\"{o}ng\"{u}s\"{u} y\"{o}netimi ve ba\u{g}{\i}ml{\i}l{\i}k \c{c}\"{o}z\"{u}mleme --- t\"{u}m bunlar JVM i\c{c}inde \c{c}al{\i}\c{s}an IoC Container taraf{\i}ndan y\"{o}netilir.
+
+\begin{tipbox}
+IoC'yi \c{s}\"{o}yle d\"{u}\c{s}\"{u}n\"{u}n: bir restoranda yemek sipari\c{s} veriyorsunuz. Malzeme almak, pi\c{s}irmek, servis etmek sizin i\c{s}iniz de\u{g}il --- sadece ``ne istedi\u{g}inizi'' s\"{o}yl\"{u}yorsunuz. Restoran (framework) gerisini hallediyor. Kontrol sizden restorana ge\c{c}ti --- i\c{s}te IoC budur.
+\end{tipbox}
+
+\newpage
+
+% =========================================================================
+% SECTION 4
+% =========================================================================
+\section{Spring IoC Container \& Bean Ya\c{s}am D\"{o}ng\"{u}s\"{u}}
+
+IoC bir prensipti. \c{S}imdi Spring'in bu prensibi \textbf{nas{\i}l} uygulad{\i}\u{g}{\i}na bakal{\i}m.
+
+\subsection*{Bean Nedir?}
+
+Spring IoC Container'{\i}n y\"{o}netti\u{g}i her nesneye \textbf{Bean} denir. \texttt{@Component}, \texttt{@Service}, \texttt{@Repository}, \texttt{@Controller} ile i\c{s}aretlenen s{\i}n{\i}flar birer bean'dir.
+
+\begin{center}
+\begin{tabular}{lp{8cm}}
+\toprule
+\textbf{Annotation} & \textbf{Anlam{\i}} \\
+\midrule
+\texttt{@Component} & Genel ama\c{c}l{\i} bean. ``Bu s{\i}n{\i}f{\i} Spring y\"{o}netsin.'' \\
+\texttt{@Service} & Service katman{\i} bean'i. \texttt{@Component}'in \"{o}zelle\c{s}mi\c{s} hali. \\
+\texttt{@Repository} & Repository katman{\i} bean'i. Veritaban{\i} exception \c{c}evirimi yapar. \\
+\texttt{@Controller} & Web katman{\i} bean'i. HTTP isteklerini kar\c{s}{\i}lar. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Teknik olarak \texttt{@Service}, \texttt{@Repository} ve \texttt{@Controller}'{\i}n hepsi asl{\i}nda birer \texttt{@Component}'t{\i}r. Spring i\c{c}inde ayn{\i} \c{s}ekilde bean olarak kaydedilirler. Fark \textbf{anlamsal}d{\i}r --- kodunuzu okuyan ki\c{s}i ``bu bir Service'' veya ``bu bir Repository'' oldu\u{g}unu hemen anlar.
+
+\subsection*{Bean Ya\c{s}am D\"{o}ng\"{u}s\"{u}}
+
+\begin{enumerate}
+    \item \textbf{Uygulama ba\c{s}lar} --- Spring, classpath'teki t\"{u}m \texttt{@Component} t\"{u}revlerini tarar.
+    \item \textbf{Bean tan{\i}mlar{\i} olu\c{s}turulur} --- Hangi bean'lerin gerekli oldu\u{g}u belirlenir.
+    \item \textbf{Ba\u{g}{\i}ml{\i}l{\i}k \c{c}\"{o}z\"{u}mleme} --- Her bean'in ihtiyac{\i} olan ba\u{g}{\i}ml{\i}l{\i}klar belirlenir.
+    \item \textbf{Bean'ler olu\c{s}turulur} --- Do\u{g}ru s{\i}rayla nesneler yarat{\i}l{\i}r ve enjekte edilir.
+    \item \textbf{Uygulama \c{c}al{\i}\c{s}{\i}r} --- Bean'ler haz{\i}r, istekler kar\c{s}{\i}lan{\i}r.
+    \item \textbf{Uygulama kapan{\i}r} --- Bean'ler yok edilir.
+\end{enumerate}
+
+\subsection*{Bean Scope}
+
+\begin{center}
+\begin{tabular}{llp{6cm}}
+\toprule
+\textbf{Scope} & \textbf{Ka\c{c} nesne?} & \textbf{A\c{c}{\i}klama} \\
+\midrule
+\texttt{singleton} (varsay{\i}lan) & 1 & T\"{u}m uygulama boyunca tek bir nesne. \\
+\texttt{prototype} & Her istenildi\u{g}inde yeni & Her \texttt{getBean()} \c{c}a\u{g}r{\i}s{\i}nda yeni nesne. \\
+\texttt{request} & Her HTTP istek i\c{c}in 1 & Web uygulamalar{\i}nda. \\
+\texttt{session} & Her HTTP session i\c{c}in 1 & Web uygulamalar{\i}nda. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{warningbox}
+Varsay{\i}lan scope \texttt{singleton}'d{\i}r. Bu, \texttt{TaskService}'ten uygulama boyunca tek bir nesne oldu\u{g}u anlam{\i}na gelir. Bu y\"{u}zden Service s{\i}n{\i}flar{\i}n{\i}zda \textbf{durum tutmay{\i}n} (instance variable'da kullan{\i}c{\i}ya \"{o}zel veri saklamay{\i}n). Farkl{\i} kullan{\i}c{\i}lar{\i}n istekleri ayn{\i} nesne \"{u}zerinden ge\c{c}er!
+\end{warningbox}
+
+\newpage
+
+% =========================================================================
+% SECTION 5
+% =========================================================================
+\section{Dependency Injection Derinlemesine}
+
+IoC ``kontrol\"{u} devret'' diyordu. Peki Spring, bir bean'in ihtiya\c{c} duydu\u{g}u ba\u{g}{\i}ml{\i}l{\i}klar{\i} ona \textbf{nas{\i}l} veriyor? \.{I}\c{s}te bu mekanizmaya \textbf{Dependency Injection (DI)} denir.
+
+Bir s{\i}n{\i}f{\i}n \c{c}al{\i}\c{s}mas{\i} i\c{c}in ba\c{s}ka bir s{\i}n{\i}fa ihtiyac{\i} varsa, bu ihtiya\c{c} bir \textbf{ba\u{g}{\i}ml{\i}l{\i}kt{\i}r} (dependency). \"{O}rne\u{g}in \texttt{TaskService}, g\"{o}revleri kaydetmek i\c{c}in \texttt{TaskRepository}'ye ba\u{g}{\i}ml{\i}d{\i}r.
+
+\subsection*{Yanl{\i}\c{s} Yol: Ba\u{g}{\i}ml{\i}l{\i}\u{g}{\i} Kendin Olu\c{s}turmak}
+
+\begin{lstlisting}[style=java]
+// BUNU YAPMAYIN
+public class TaskService {
+    private TaskRepository taskRepository = new TaskRepository();
+    // TaskRepository'nin constructor'i degisirse?
+    // Test yazarken mock nasil vereceksiniz?
+}
+\end{lstlisting}
+
+Bu yakla\c{s}{\i}m s{\i}n{\i}flar{\i} birbirine s{\i}k{\i} s{\i}k{\i}ya ba\u{g}lar (tight coupling). Test edilemez, de\u{g}i\c{s}tirilemez, y\"{o}netilemez.
+
+\subsection*{Do\u{g}ru Yol: Ba\u{g}{\i}ml{\i}l{\i}\u{g}{\i} D{\i}\c{s}ar{\i}dan Almak}
+
+\begin{lstlisting}[style=java]
+// DOGRU YOL: Constructor Injection
+@Service
+public class TaskService {
+    private final TaskRepository taskRepository;
+
+    // Bagimlilik disaridan veriliyor
+    public TaskService(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
+}
+\end{lstlisting}
+
+\texttt{TaskService}, \texttt{TaskRepository}'nin nas{\i}l olu\c{s}turuldu\u{g}unu bilmiyor. Sadece ``bana bir \texttt{TaskRepository} ver'' diyor. \textbf{Kim veriyor?} Spring IoC Container.
+
+\subsection*{\"{U}\c{c} Injection Y\"{o}ntemi}
+
+\begin{center}
+\begin{tabular}{p{4.5cm}p{8cm}}
+\toprule
+\textbf{Y\"{o}ntem} & \textbf{Nas{\i}l?} \\
+\midrule
+\textbf{Constructor Injection} & Constructor parametresi ile \\
+Field Injection & \texttt{@Autowired} direkt alana \\
+Setter Injection & Setter metodu ile \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsubsection*{1. Constructor Injection \textcolor{green!60!black}{(\"{O}nerilen)}}
+
+En temiz y\"{o}ntemdir. Ba\u{g}{\i}ml{\i}l{\i}k \texttt{final} yap{\i}labilir, test i\c{c}in mock vermek kolayd{\i}r. Spring Boot'ta tek constructor varsa \texttt{@Autowired} yazmaya bile gerek yoktur.
+
+\begin{lstlisting}[style=java]
+@Service
+public class TaskService {
+    private final TaskRepository taskRepository;
+
+    // Spring, tek constructor varsa @Autowired olmadan da enjekte eder
+    public TaskService(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
+}
+\end{lstlisting}
+
+\subsubsection*{2. Field Injection \textcolor{red}{(\"{O}nerilmez)}}
+
+\texttt{@Autowired} ile do\u{g}rudan alana enjekte edilir. Alan \texttt{final} yap{\i}lamaz, test i\c{c}in mock vermek zordur.
+
+\begin{lstlisting}[style=java]
+@Service
+public class TaskService {
+    @Autowired  // Spring dogrudan alana enjekte eder
+    private TaskRepository taskRepository;
+    // final yapamazsiniz, test icin mock vermek zor
+}
+\end{lstlisting}
+
+\subsubsection*{3. Setter Injection}
+
+Opsiyonel ba\u{g}{\i}ml{\i}l{\i}klar i\c{c}in kullan{\i}l{\i}r. Ba\u{g}{\i}ml{\i}l{\i}k sonradan de\u{g}i\c{s}tirilebilir --- bu hem avantaj hem dezavantajd{\i}r.
+
+\begin{lstlisting}[style=java]
+@Service
+public class TaskService {
+    private TaskRepository taskRepository;
+
+    @Autowired
+    public void setTaskRepository(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
+}
+\end{lstlisting}
+
+\newpage
+
+% =========================================================================
+% SECTION 6
+% =========================================================================
+\section{Lombok: Boilerplate Koddan Kurtulmak}
+
+Az \"{o}nce g\"{o}rd\"{u}\u{g}\"{u}m\"{u}z constructor injection temiz bir y\"{o}ntem. Ama her s{\i}n{\i}f i\c{c}in getter, setter, constructor tekrar tekrar yazmak yorucu. \textbf{Lombok}, derleme zaman{\i}nda bu kodlar{\i} otomatik \"{u}retir.
+
+\subsection*{Temel Lombok Annotation'lar{\i}}
+
+\begin{center}
+\begin{tabular}{lp{9cm}}
+\toprule
+\textbf{Annotation} & \textbf{Ne \"{U}retir?} \\
+\midrule
+\texttt{@Getter} & T\"{u}m alanlar i\c{c}in getter metodlar{\i} \\
+\texttt{@Setter} & T\"{u}m alanlar i\c{c}in setter metodlar{\i} \\
+\texttt{@NoArgsConstructor} & Parametresiz constructor \\
+\texttt{@AllArgsConstructor} & T\"{u}m alanlar{\i} alan constructor \\
+\texttt{@RequiredArgsConstructor} & Sadece \texttt{final} alanlar i\c{c}in constructor \\
+\texttt{@Data} & Getter + Setter + ToString + EqualsAndHashCode + RequiredArgsConstructor \\
+\texttt{@Builder} & Builder pattern ile nesne olu\c{s}turma \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Entity'de Lombok: @Getter ve @Setter}
+
+Projemizdeki \texttt{Task} entity'sinde Lombok \c{s}\"{o}yle kullan{\i}l{\i}yor:
+
+\begin{lstlisting}[style=java]
+@Getter
+@Setter
+@Entity
+@Table(name = "tasks")
+public class Task {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String title;
+
+    @Enumerated(EnumType.STRING)
+    private TaskStatus status;
+
+    private LocalDateTime createdAt;
+}
+\end{lstlisting}
+
+Manuel getter/setter yazmaya gerek kalmad{\i}. Lombok derleme zaman{\i}nda hepsini \"{u}retir.
+
+\subsection*{Entity Annotation'lar{\i}n{\i} Anlayal{\i}m}
+
+Bu kodda Lombok d{\i}\c{s}{\i}nda birka\c{c} JPA annotation'{\i} var. Her birinin ne yapt{\i}\u{g}{\i}n{\i} tek tek inceleyelim.
+
+\textbf{\texttt{@Id}} --- Bu alan{\i}n tablonun \textbf{primary key}'i oldu\u{g}unu belirtir. Her Entity'de mutlaka bir \texttt{@Id} olmal{\i}d{\i}r. Bu olmadan Hibernate entity'yi tan{\i}maz.
+
+\textbf{\texttt{@GeneratedValue}} --- ID de\u{g}erinin \textbf{otomatik \"{u}retilece\u{g}ini} s\"{o}yler. \.{I}ki parametresi var:
+
+\begin{itemize}
+    \item \texttt{strategy}: ID'nin \textbf{nas{\i}l} \"{u}retilece\u{g}ini belirler. Se\c{c}enekler:
+    \begin{center}
+    \begin{tabular}{llp{6cm}}
+    \toprule
+    \textbf{Strateji} & \textbf{Davran{\i}\c{s}} & \textbf{Kullan{\i}m} \\
+    \midrule
+    \texttt{IDENTITY} & Veritaban{\i}n{\i}n auto-increment \"{o}zelli\u{g}ini kullan{\i}r & H2, MySQL \\
+    \texttt{SEQUENCE} & Veritaban{\i}nda ayr{\i} bir sequence objesi olu\c{s}turur & PostgreSQL, Oracle \\
+    \texttt{TABLE} & Ayr{\i} bir tablo ile ID \"{u}retir & Nadiren kullan{\i}l{\i}r \\
+    \texttt{AUTO} & Hibernate veritaban{\i}na g\"{o}re karar verir & \"{O}nerilmez \\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+
+    \item \texttt{generator}: Hangi \texttt{@SequenceGenerator} tan{\i}m{\i}n{\i} kullanaca\u{g}{\i}n{\i} belirtir. Sadece \texttt{SEQUENCE} stratejisinde gereklidir.
+\end{itemize}
+
+Projemizde H2 veritaban{\i} kullan{\i}yoruz ve \texttt{GenerationType.IDENTITY} yeterli. Bu, H2'nin auto-increment \"{o}zelli\u{g}ini kullan{\i}r:
+
+\begin{lstlisting}[style=java]
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Long id;
+\end{lstlisting}
+
+\textbf{\texttt{@Enumerated(EnumType.STRING)}} --- Enum de\u{g}erinin veritaban{\i}na \textbf{nas{\i}l} kaydedilece\u{g}ini belirler. \.{I}ki se\c{c}enek var:
+
+\begin{center}
+\begin{tabular}{llp{5cm}}
+\toprule
+\textbf{Se\c{c}enek} & \textbf{DB'de saklanan} & \textbf{\"{O}rnek} \\
+\midrule
+\texttt{EnumType.STRING} & Metin & \texttt{"PENDING"}, \texttt{"DONE"} \\
+\texttt{EnumType.ORDINAL} (varsay{\i}lan) & S{\i}ra numaras{\i} & \texttt{0}, \texttt{1}, \texttt{2} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{dangerbox}
+\texttt{@Enumerated} yazmasan{\i}z Hibernate varsay{\i}lan olarak \texttt{ORDINAL} kullan{\i}r --- yani enum'lar{\i} s{\i}ra numaras{\i} (0, 1, 2) olarak kaydeder. Bu neden tehlikelidir? Diyelim enum \c{s}u s{\i}rada:
+
+\begin{lstlisting}[style=java]
+public enum TaskStatus {
+    PENDING,      // ordinal = 0
+    IN_PROGRESS,  // ordinal = 1
+    DONE          // ordinal = 2
+}
+\end{lstlisting}
+
+Yar{\i}n enum'a \texttt{CANCELLED} eklediniz ve \texttt{DONE}'dan \"{o}nce koydunuz:
+
+\begin{lstlisting}[style=java]
+public enum TaskStatus {
+    PENDING,      // 0
+    IN_PROGRESS,  // 1
+    CANCELLED,    // 2  --- yeni eklendi
+    DONE          // 3  --- eskiden 2'ydi!
+}
+\end{lstlisting}
+
+\texttt{ORDINAL} kullansayd{\i}n{\i}z, veritaban{\i}nda \texttt{2} olarak kay{\i}tl{\i} t\"{u}m \texttt{DONE} sat{\i}rlar{\i} art{\i}k \texttt{CANCELLED} olarak okunurdu. Veri sessizce bozulur, hata bile almadan. \texttt{STRING} ile \texttt{"DONE"} her zaman \texttt{"DONE"} kal{\i}r --- enum s{\i}ras{\i} de\u{g}i\c{s}se bile. Bu y\"{u}zden her zaman \texttt{EnumType.STRING} kullan{\i}n.
+\end{dangerbox}
+
+\subsection*{Entity'lerde @Data Kullanmay{\i}n!}
+
+\begin{dangerbox}
+Yeni ba\c{s}layanlar{\i}n en s{\i}k yapt{\i}\u{g}{\i} hata: Entity s{\i}n{\i}f{\i}na \texttt{@Data} koymak. \texttt{@Data}, arka planda \texttt{equals()} ve \texttt{hashCode()} metodlar{\i}n{\i} t\"{u}m alanlar{\i} kullanarak \"{u}retir. Bu iki ciddi soruna yol a\c{c}ar:
+
+\begin{enumerate}
+    \item \textbf{Lazy-loaded ili\c{s}kiler (\texttt{LazyInitializationException}):} \texttt{@Data}'n{\i}n \"{u}retti\u{g}i \texttt{toString()} metodu \textbf{t\"{u}m alanlar{\i}} okur --- LAZY ili\c{s}kiler dahil. Normalde LAZY ili\c{s}kiler sadece siz eri\c{s}ti\u{g}inizde y\"{u}klenir. Ama \texttt{toString()} t\"{u}m alanlara eri\c{s}ti\u{g}i i\c{c}in Hibernate bu verileri veritaban{\i}ndan \c{c}ekmeye \c{c}al{\i}\c{s}{\i}r. E\u{g}er bu an transaction kapanm{\i}\c{s}sa (mesela Controller'a d\"{o}nd\"{u}kten sonra), Hibernate veritaban{\i}na gidemez ve \texttt{LazyInitializationException} f{\i}rlar.
+
+    \item \textbf{Sonsuz d\"{o}ng\"{u} (\texttt{StackOverflowError}):} \.{I}ki entity birbirine referans veriyorsa (Task $\leftrightarrow$ Comment), \texttt{toString()} \c{s}\"{o}yle \c{c}al{\i}\c{s}{\i}r: Task'{\i}n \texttt{toString()}'i Comment listesini yazmaya \c{c}al{\i}\c{s}{\i}r $\rightarrow$ her Comment'in \texttt{toString()}'i kendi Task'{\i}n{\i} yazmaya \c{c}al{\i}\c{s}{\i}r $\rightarrow$ o Task tekrar Comment'leri yazmaya \c{c}al{\i}\c{s}{\i}r $\rightarrow$ \ldots{} sonsuz d\"{o}ng\"{u}. JVM stack'i dolar ve \texttt{StackOverflowError} al{\i}rs{\i}n{\i}z.
+\end{enumerate}
+
+Do\u{g}ru yakla\c{s}{\i}m: Entity'lerde \texttt{@Getter} ve \texttt{@Setter} ayr{\i} ayr{\i} kullan{\i}n. \texttt{@Data} yerine sadece ihtiyac{\i}n{\i}z olan annotation'lar{\i} koyun.
+\end{dangerbox}
+
+\begin{lstlisting}[style=java]
+// YANLIS --- Entity'de @Data
+@Data   // equals, hashCode, toString TEHLIKELI!
+@Entity
+public class Task { ... }
+
+// DOGRU --- Sadece ihtiyaciniz olanlari kullanin
+@Getter
+@Setter
+@Entity
+public class Task { ... }
+\end{lstlisting}
+
+\subsection*{@RequiredArgsConstructor ile DI}
+
+\texttt{@RequiredArgsConstructor}, \texttt{final} alanlar i\c{c}in otomatik constructor \"{u}retir. Bu, constructor injection'{\i} tek sat{\i}ra indirir:
+
+\begin{lstlisting}[style=java]
+// Lombok OLMADAN
+@Service
+public class TaskService {
+    private final TaskRepository taskRepository;
+
+    public TaskService(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
+}
+
+// Lombok ILE --- ayni sey!
+@Service
+@RequiredArgsConstructor
+public class TaskService {
+    private final TaskRepository taskRepository;
+    // Constructor otomatik uretilir
+}
+\end{lstlisting}
+
+\newpage
+
+% =========================================================================
+% SECTION 7
+% =========================================================================
+\section{TaskService: CRUD \.{I}\c{s} Mant{\i}\u{g}{\i}}
+
+\c{S}imdi t\"{u}m bu bilgileri birle\c{s}tirip \texttt{TaskService}'i yazal{\i}m. Projemizdeki ger\c{c}ek kod:
+
+\begin{lstlisting}[style=java]
+@Service
+@RequiredArgsConstructor
+public class TaskService {
+
+    private final TaskRepository taskRepository;
+    private final Map<String, TaskSortStrategy> sortStrategies;
+
+    public Task createTask(String title) {
+        Task task = new Task();
+        task.setTitle(title);
+        task.setStatus(TaskStatus.PENDING);
+        task.setCreatedAt(LocalDateTime.now());
+        return taskRepository.save(task);
+    }
+
+    public Task getTaskById(Long id) {
+        return taskRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException(
+                    "Task bulunamadı: " + id));
+    }
+
+    public Task completeTask(Long id) {
+        Task task = getTaskById(id);
+        task.setStatus(TaskStatus.DONE);
+        return taskRepository.save(task);
+    }
+
+    public List<Task> getAllTasks() {
+        return taskRepository.findAll();
+    }
+
+    public List<Task> getTasks(String sortType) {
+        List<Task> tasks = taskRepository.findAll();
+
+        TaskSortStrategy strategy = sortStrategies
+                .getOrDefault(sortType, sortStrategies.get("byDate"));
+
+        return strategy.sort(tasks);
+    }
+
+    public void deleteTask(Long id) {
+        Task task = getTaskById(id);
+        taskRepository.delete(task);
+    }
+}
+\end{lstlisting}
+
+\subsection*{Sat{\i}r Sat{\i}r \.{I}nceleyelim}
+
+\textbf{\texttt{@RequiredArgsConstructor}}: \texttt{final} olan \texttt{taskRepository} ve \texttt{sortStrategies} i\c{c}in otomatik constructor \"{u}retir. Spring bu constructor'{\i} kullanarak her iki ba\u{g}{\i}ml{\i}l{\i}\u{g}{\i} enjekte eder.
+
+\textbf{\texttt{createTask}}: Yeni bir \texttt{Task} nesnesi olu\c{s}turur, varsay{\i}lan de\u{g}erleri set eder ve kaydeder. Varsay{\i}lan durum her zaman \texttt{PENDING}'dir --- bu bir \textbf{i\c{s} kural{\i}d{\i}r} ve Service'te uygulan{\i}r.
+
+\textbf{\texttt{getTaskById}}: Repository'den \texttt{Optional<Task>} d\"{o}ner. \texttt{Optional}, Java'n{\i}n ``bu de\u{g}er var da olmayabilir de'' demenin yoludur. Normalde \texttt{findById()} bir \texttt{Task} d\"{o}nseydi ve kay{\i}t yoksa \texttt{null} gelseydi, siz bunu kontrol etmeyi unuttu\u{g}unuzda \texttt{NullPointerException} al{\i}rd{\i}n{\i}z. \texttt{Optional} sizi bu kontrole \textbf{zorlar} --- de\u{g}eri \c{c}{\i}karmadan kullanamazs{\i}n{\i}z.
+
+\begin{lstlisting}[style=java]
+// YANLIS --- NullPointerException riski
+Task task = taskRepository.findById(id).get();
+
+// DOGRU --- Yoksa acikca hata firlat
+Task task = taskRepository.findById(id)
+    .orElseThrow(() -> new RuntimeException("Task bulunamadi: " + id));
+\end{lstlisting}
+
+\texttt{orElseThrow} kullanmak, ``bu kayd{\i} bulamazsan hata ver'' demektir. B\"{o}ylece \texttt{null} kontrol\"{u} unutma riski ortadan kalkar.
+
+\textbf{\texttt{completeTask}}: \"{O}nce g\"{o}revi bulur (yoksa hata f{\i}rlar), sonra durumunu de\u{g}i\c{s}tirir ve kaydeder. Dikkat edin: \texttt{getTaskById}'yi tekrar kullan{\i}yoruz --- \textbf{kod tekrar{\i} yok}.
+
+\textbf{\texttt{getTasks}}: S{\i}ralama stratejisini Map'ten se\c{c}er ve uygular. Bu metodu Strategy Pattern b\"{o}l\"{u}m\"{u}nde detayl{\i} inceleyece\u{g}iz.
+
+\textbf{\texttt{deleteTask}}: \"{O}nce g\"{o}revin var oldu\u{g}unu do\u{g}rular (\texttt{getTaskById} ile), sonra siler. Olmayan bir g\"{o}revi silmeye \c{c}al{\i}\c{s}{\i}rsan{\i}z \texttt{getTaskById} hata f{\i}rlat{\i}r.
+
+\begin{infobox}[title={\textbf{completeTask ve Durum Ge\c{c}i\c{s}leri}}]
+\c{S}u an \texttt{completeTask} do\u{g}rudan \texttt{DONE} yap{\i}yor. Ger\c{c}ek bir projede durum ge\c{c}i\c{s}lerinin kontrol edilmesi gerekir (\"{o}rne\u{g}in PENDING $\rightarrow$ IN\_PROGRESS $\rightarrow$ DONE s{\i}ras{\i}). Bu konuyu ilerleyen haftalarda geli\c{s}tirece\u{g}iz.
+\end{infobox}
+
+\begin{warningbox}
+\texttt{orElseThrow} i\c{c}inde \texttt{RuntimeException} kullanmak \c{s}imdilik yeterli. Ancak ger\c{c}ek projelerde \textbf{\"{o}zel exception s{\i}n{\i}flar{\i}} olu\c{s}turmal{\i}s{\i}n{\i}z (\"{o}rne\u{g}in \texttt{TaskNotFoundException}). Bunu ilerleyen haftalarda geli\c{s}tirece\u{g}iz.
+\end{warningbox}
+
+\newpage
+
+% =========================================================================
+% SECTION 8
+% =========================================================================
+\section{Problemi Tan{\i}yal{\i}m: if-else Zinciri}
+
+\c{S}imdi size ger\c{c}ek bir problem tan{\i}tmak istiyorum. Vakti geldi\u{g}inde hepinizin kar\c{s}{\i}la\c{s}aca\u{g}{\i} bir durum.
+
+\textbf{Senaryo:} G\"{o}revleri listelemek istiyoruz. Ama baz{\i} kullan{\i}c{\i}lar tarihe g\"{o}re, baz{\i}lar{\i} ba\c{s}l{\i}\u{g}a g\"{o}re, baz{\i}lar{\i} duruma g\"{o}re s{\i}ralanm{\i}\c{s} liste istiyor.
+
+\.{I}lk akla gelen \c{c}\"{o}z\"{u}m:
+
+\begin{lstlisting}[style=java]
+// BUNU YAZMAYIN
+public List<Task> getTasks(String sortType) {
+    List<Task> tasks = taskRepository.findAll();
+
+    if (sortType.equals("date")) {
+        tasks.sort(Comparator.comparing(Task::getCreatedAt));
+    } else if (sortType.equals("title")) {
+        tasks.sort(Comparator.comparing(Task::getTitle));
+    } else if (sortType.equals("status")) {
+        // ...
+    }
+    // Yarin "oncelik" istegi gelirse?
+    // Bu metoda tekrar gireceksiniz.
+    // Her yeni ozellik mevcut kodu degistirmek demek.
+    // Bu tehlikelidir.
+    return tasks;
+}
+\end{lstlisting}
+
+Bu kod ilk bak{\i}\c{s}ta zarars{\i}z g\"{o}r\"{u}n\"{u}yor. Ama sorunlar{\i} s{\i}ralayal{\i}m:
+
+\begin{enumerate}
+    \item \textbf{Her yeni s{\i}ralama = mevcut kodu de\u{g}i\c{s}tirmek.} 3 ay sonra 8 farkl{\i} s{\i}ralama se\c{c}ene\u{g}i eklenince bu metod 50 sat{\i}ra ula\c{s}{\i}r.
+    \item \textbf{Test edilmesi zor.} Her if dal{\i} i\c{c}in ayr{\i} test yazman{\i}z gerekir ve hepsi ayn{\i} metod i\c{c}inde.
+    \item \textbf{Bir dal{\i} de\u{g}i\c{s}tirmek di\u{g}erlerini k{\i}rabilir.} if-else zincirinde bir hata, t\"{u}m s{\i}ralama mant{\i}\u{g}{\i}n{\i} bozar.
+    \item \textbf{Sorumluluk da\u{g}{\i}n{\i}k.} T\"{u}m s{\i}ralama stratejileri tek bir metodun i\c{c}ine s{\i}k{\i}\c{s}m{\i}\c{s}.
+\end{enumerate}
+
+Peki \c{c}\"{o}z\"{u}m ne? \textbf{De\u{g}i\c{s}en davran{\i}\c{s}{\i} ayr{\i} s{\i}n{\i}flara ta\c{s}{\i}mak.}
+
+\newpage
+
+% =========================================================================
+% SECTION 9
+% =========================================================================
+\section{Strategy Pattern: De\u{g}i\c{s}en Davran{\i}\c{s}{\i} Y\"{o}netmek}
+
+Strategy Pattern, \textbf{ayn{\i} i\c{s}in farkl{\i} yollarla yap{\i}labilece\u{g}i} durumlarda kullan{\i}l{\i}r. Fikir basit: de\u{g}i\c{s}en davran{\i}\c{s}{\i} bir aray\"{u}z (interface) arkas{\i}na sakla. Her strateji kendi s{\i}n{\i}f{\i}nda ya\c{s}as{\i}n. Yeni strateji eklemek = yeni s{\i}n{\i}f yazmak. Mevcut koda dokunmak gerekmesin.
+
+\subsection*{Ad{\i}m 1 --- Ortak Aray\"{u}z\"{u} Tan{\i}mla}
+
+\begin{lstlisting}[style=java]
+public interface TaskSortStrategy {
+    List<Task> sort(List<Task> tasks);
+}
+\end{lstlisting}
+
+Bu interface bir \textbf{s\"{o}zle\c{s}me}. ``S{\i}ralama yapan her \c{s}ey bu metodu implemente etmek zorunda'' diyor.
+
+\subsection*{Ad{\i}m 2 --- Stratejileri Yaz}
+
+\begin{lstlisting}[style=java]
+@Component("byDate")
+public class SortByDate implements TaskSortStrategy {
+    @Override
+    public List<Task> sort(List<Task> tasks) {
+        return tasks.stream()
+                .sorted(Comparator.comparing(Task::getCreatedAt))
+                .toList();
+    }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[style=java]
+@Component("byTitle")
+public class SortByTitle implements TaskSortStrategy {
+    @Override
+    public List<Task> sort(List<Task> tasks) {
+        return tasks.stream()
+                .sorted(Comparator.comparing(Task::getTitle))
+                .toList();
+    }
+}
+\end{lstlisting}
+
+Dikkat: \texttt{@Component("byDate")} --- parantez i\c{c}indeki isim, bu bean'in \textbf{ad{\i}d{\i}r}. Bu isim birazdan \c{c}ok \"{o}nemli olacak.
+
+\subsection*{Ad{\i}m 3 --- Service'e Entegre Et}
+
+\begin{lstlisting}[style=java]
+@Service
+@RequiredArgsConstructor
+public class TaskService {
+
+    private final TaskRepository taskRepository;
+    private final Map<String, TaskSortStrategy> sortStrategies;
+
+    public List<Task> getTasks(String sortType) {
+        List<Task> tasks = taskRepository.findAll();
+
+        TaskSortStrategy strategy = sortStrategies
+                .getOrDefault(sortType, sortStrategies.get("byDate"));
+
+        return strategy.sort(tasks);
+    }
+}
+\end{lstlisting}
+
+\subsection*{Burada Ne Oldu?}
+
+Spring'in \c{c}ok g\"{u}\c{c}l\"{u} bir \"{o}zelli\u{g}i devreye girdi. \texttt{Map<String, TaskSortStrategy>} tipinde bir ba\u{g}{\i}ml{\i}l{\i}k istedi\u{g}inizde Spring:
+
+\begin{enumerate}
+    \item \texttt{TaskSortStrategy} interface'ini implemente eden t\"{u}m bean'leri bulur.
+    \item Her birini \textbf{bean ad{\i}} $\rightarrow$ \textbf{bean nesnesi} \c{s}eklinde bir \texttt{Map}'e koyar.
+    \item Sonu\c{c}: \texttt{\{"byDate": SortByDate, "byTitle": SortByTitle\}}
+\end{enumerate}
+
+\texttt{getOrDefault} ile ge\c{c}ersiz bir sortType gelirse varsay{\i}lan olarak \texttt{byDate} stratejisini kullan{\i}yoruz.
+
+\begin{infobox}[title={\textbf{Spring'in Map Injection Mekanizmas{\i}}}]
+Spring, bir interface tipinde \texttt{Map<String, T>} veya \texttt{List<T>} istedi\u{g}inizde, o interface'i implemente eden \textbf{t\"{u}m bean'leri} otomatik olarak toplar. Map'te key olarak bean ad{\i}, List'te ise t\"{u}m bean'ler s{\i}rayla gelir. Bu \"{o}zellik Strategy Pattern'i Spring'de \c{c}ok do\u{g}al hale getirir.
+\end{infobox}
+
+\subsection*{Yeni Strateji Eklemek}
+
+Yar{\i}n ``\"{o}nceli\u{g}e g\"{o}re s{\i}rala'' istegi gelse ne yapars{\i}n{\i}z?
+
+\begin{lstlisting}[style=java]
+@Component("byPriority")
+public class SortByPriority implements TaskSortStrategy {
+    @Override
+    public List<Task> sort(List<Task> tasks) {
+        return tasks.stream()
+                .sorted(Comparator.comparing(Task::getPriority))
+                .toList();
+    }
+}
+// BITTI. TaskService'e TEK SATIR dokunmadik.
+\end{lstlisting}
+
+Spring, yeni \texttt{@Component}'i otomatik olarak \texttt{sortStrategies} Map'ine ekler. Service kodu de\u{g}i\c{s}mez, test edilmi\c{s} kod bozulmaz.
+
+\begin{tipbox}
+Strategy Pattern'in Spring Boot ile kullan{\i}m{\i}n{\i} daha detayl{\i} incelemek isterseniz:\\
+\url{https://medium.com/codex/implementing-the-strategy-design-pattern-in-spring-boot-df3adb9ceb4a}
+\end{tipbox}
+
+\newpage
+
+% =========================================================================
+% SECTION 10
+% =========================================================================
+\section{Open/Closed Principle (SOLID)}
+
+Az \"{o}nce yapt{\i}\u{g}{\i}m{\i}z \c{s}eyin yaz{\i}l{\i}m d\"{u}nyas{\i}nda bir ad{\i} var: \textbf{Open/Closed Principle} (A\c{c}{\i}k/Kapal{\i} \.{I}lkesi). SOLID prensiplerinin ikincisi.
+
+\begin{infobox}[title={\textbf{Open/Closed Principle}}]
+Kod \textbf{geni\c{s}lemeye a\c{c}{\i}k}, \textbf{de\u{g}i\c{s}ime kapal{\i}} olmal{\i}d{\i}r.\\[0.3cm]
+Yeni \"{o}zellik eklemek i\c{c}in mevcut kodu de\u{g}i\c{s}tirmenize gerek kalmamas{\i} gerekir.
+\end{infobox}
+
+\begin{center}
+\begin{tabular}{p{6cm}p{6.5cm}}
+\toprule
+\textbf{if-else Yakla\c{s}{\i}m{\i}} & \textbf{Strategy Pattern} \\
+\midrule
+Yeni s{\i}ralama = mevcut metodu de\u{g}i\c{s}tir & Yeni s{\i}ralama = yeni s{\i}n{\i}f yaz \\
+Test edilen kod bozulabilir & Mevcut kod dokunulmaz \\
+De\u{g}i\c{s}ime \textbf{a\c{c}{\i}k} (k\"{o}t\"{u}) & De\u{g}i\c{s}ime \textbf{kapal{\i}} (iyi) \\
+Geni\c{s}leme zor & Geni\c{s}lemeye \textbf{a\c{c}{\i}k} (iyi) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{SOLID'in Di\u{g}er Prensipleri}
+
+SOLID, be\c{s} temel tasar{\i}m prensibinin ba\c{s} harflerinden olu\c{s}ur. Strategy Pattern'imiz bunlar{\i}n birka\c{c}{\i}n{\i} ayn{\i} anda uyguluyor. Her birini k{\i}saca tan{\i}yal{\i}m.
+
+\subsubsection*{S --- Single Responsibility Principle (Tek Sorumluluk)}
+
+Her s{\i}n{\i}f{\i}n \textbf{tek bir de\u{g}i\c{s}me sebebi} olmal{\i}d{\i}r. Bir s{\i}n{\i}f birden fazla i\c{s} yap{\i}yorsa, bir i\c{s}i de\u{g}i\c{s}tirirken di\u{g}erini k{\i}rma riskiniz vard{\i}r.
+
+\begin{lstlisting}[style=java]
+// YANLIS --- Hem siralama hem loglama yapiyor
+public class SortByDate implements TaskSortStrategy {
+    public List<Task> sort(List<Task> tasks) {
+        System.out.println("Siralama basladi"); // Log islemi
+        return tasks.stream()
+                .sorted(Comparator.comparing(Task::getCreatedAt))
+                .toList();
+    }
+}
+
+// DOGRU --- Sadece siralama yapiyor
+public class SortByDate implements TaskSortStrategy {
+    public List<Task> sort(List<Task> tasks) {
+        return tasks.stream()
+                .sorted(Comparator.comparing(Task::getCreatedAt))
+                .toList();
+    }
+}
+\end{lstlisting}
+
+\subsubsection*{O --- Open/Closed Principle (A\c{c}{\i}k/Kapal{\i})}
+
+Yukar{\i}da detayl{\i} i\c{s}ledik: yeni strateji eklemek = yeni s{\i}n{\i}f yazmak, \texttt{TaskService}'e dokunmamak.
+
+\subsubsection*{L --- Liskov Substitution Principle (Yerine Ge\c{c}ebilirlik)}
+
+Bir alt s{\i}n{\i}f, \"{u}st s{\i}n{\i}f{\i}n yerine ge\c{c}ti\u{g}inde program bozulmamal{\i}d{\i}r. Yani \texttt{TaskSortStrategy} bekleyen her yere \texttt{SortByDate}, \texttt{SortByTitle} veya ba\c{s}ka herhangi bir strateji verebilirsiniz --- program ayn{\i} \c{s}ekilde \c{c}al{\i}\c{s}{\i}r.
+
+\begin{lstlisting}[style=java]
+// Her ikisi de TaskSortStrategy yerine gecebilir
+TaskSortStrategy s1 = new SortByDate();
+TaskSortStrategy s2 = new SortByTitle();
+
+// Ikisi de ayni sekilde calisir --- program bozulmaz
+s1.sort(tasks);
+s2.sort(tasks);
+\end{lstlisting}
+
+\subsubsection*{I --- Interface Segregation Principle (Aray\"{u}z Ay{\i}rma)}
+
+S{\i}n{\i}flar, kullanmad{\i}klar{\i} metodlara ba\u{g}{\i}ml{\i} olmaya zorlanmamal{\i}d{\i}r. B\"{u}y\"{u}k bir interface yerine k\"{u}\c{c}\"{u}k, odakl{\i} interface'ler tercih edilmelidir.
+
+\begin{lstlisting}[style=java]
+// YANLIS --- Cok fazla sorumluluk tek interface'de
+public interface TaskOperations {
+    List<Task> sort(List<Task> tasks);
+    Task save(Task task);
+    void sendEmail(String to);
+}
+
+// DOGRU --- Her interface tek bir is yapiyor
+public interface TaskSortStrategy {
+    List<Task> sort(List<Task> tasks);
+}
+\end{lstlisting}
+
+Bizim \texttt{TaskSortStrategy} interface'imiz tek bir metod i\c{c}eriyor --- tam da olmas{\i} gerekti\u{g}i gibi.
+
+\subsubsection*{D --- Dependency Inversion Principle (Ba\u{g}{\i}ml{\i}l{\i}k Tersine \c{C}evirme)}
+
+\"{U}st seviye mod\"{u}ller, alt seviye mod\"{u}llere de\u{g}il \textbf{soyutlamalara} (interface) ba\u{g}{\i}ml{\i} olmal{\i}d{\i}r.
+
+\begin{lstlisting}[style=java]
+// YANLIS --- Somut sinifa bagimli
+public class TaskService {
+    private final SortByDate sorter = new SortByDate();
+}
+
+// DOGRU --- Interface'e bagimli
+public class TaskService {
+    private final Map<String, TaskSortStrategy> sortStrategies;
+    // Hangi somut sinif gelirse gelsin calisir
+}
+\end{lstlisting}
+
+\texttt{TaskService}, \texttt{SortByDate} veya \texttt{SortByTitle}'{\i} bilmiyor --- sadece \texttt{TaskSortStrategy} interface'ini biliyor. Yar{\i}n yeni bir strateji gelse Service'in haberi bile olmaz.
+
+\newpage
+
+% =========================================================================
+% SECTION 11
+% =========================================================================
+\section{Pratik}
+
+{\small \textit{Uygulamak isteyene \"{o}dev olarak:}}
+
+\subsection*{G\"{o}rev 1: TaskService'i Tamamlay{\i}n}
+
+\texttt{TaskService} s{\i}n{\i}f{\i}n{\i} \texttt{@RequiredArgsConstructor} ile yaz{\i}n. T\"{u}m CRUD metodlar{\i}n{\i} (\texttt{createTask}, \texttt{getTaskById}, \texttt{completeTask}, \texttt{getAllTasks}, \texttt{deleteTask}) implemente edin.
+
+\subsection*{G\"{o}rev 2: SortByStatus Stratejisi}
+
+\texttt{SortByStatus} ad{\i}nda \"{u}\c{c}\"{u}nc\"{u} bir strateji yaz{\i}n. S{\i}ralama mant{\i}\u{g}{\i}: \"{o}nce \texttt{PENDING}, sonra \texttt{IN\_PROGRESS}, en son \texttt{DONE}.
+
+\begin{lstlisting}[style=java]
+@Component("byStatus")
+public class SortByStatus implements TaskSortStrategy {
+    @Override
+    public List<Task> sort(List<Task> tasks) {
+        // Buraya siz yazin!
+        // Ipucu: TaskStatus enum'inda PENDING=0, IN_PROGRESS=1, DONE=2
+    }
+}
+\end{lstlisting}
+
+Bunu do\u{g}ru yazd{\i}\u{g}{\i}n{\i}zda \texttt{TaskService}'e \textbf{tek sat{\i}r eklemeden} yeni strateji \c{c}al{\i}\c{s}{\i}yor olacak.
+
+\newpage
+
+% =========================================================================
+% SECTION 12
+% =========================================================================
+\section{\"{O}zet}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{p{4cm}p{9cm}}
+\toprule
+\textbf{Konu} & \textbf{\"{O}\u{g}renilen} \\
+\midrule
+\textbf{Service Katman{\i}} & \.{I}\c{s} mant{\i}\u{g}{\i}n{\i}n evidir. Controller ile Repository aras{\i}ndaki koordinat\"{o}r. HTTP kavramlar{\i} burada bulunmaz. \\
+\textbf{IoC Prensibi} & Nesne olu\c{s}turma ve y\"{o}netme kontrol\"{u} framework'e devredilir. Spring bunu IoC Container ile uygular. \\
+\textbf{Dependency Injection} & Ba\u{g}{\i}ml{\i}l{\i}klar d{\i}\c{s}ar{\i}dan verilir. Constructor Injection en temiz y\"{o}ntemdir. \texttt{final} + \texttt{@RequiredArgsConstructor}. \\
+\textbf{Spring Beans} & \texttt{@Component} t\"{u}revleri bean olarak kaydedilir. Varsay{\i}lan scope singleton. Durum tutmay{\i}n. \\
+\textbf{Lombok} & Boilerplate kodu ortadan kald{\i}r{\i}r. Entity'lerde \texttt{@Getter}/\texttt{@Setter}, Service'lerde \texttt{@RequiredArgsConstructor}. \\
+\textbf{Strategy Pattern} & De\u{g}i\c{s}en davran{\i}\c{s}{\i} ayr{\i} s{\i}n{\i}flara ta\c{s}{\i}r. Yeni \"{o}zellik = yeni s{\i}n{\i}f, mevcut kod de\u{g}i\c{s}mez. Spring Map injection ile do\u{g}al entegrasyon. \\
+\textbf{SOLID} & Be\c{s} temel tasar{\i}m prensibi. Strategy Pattern bunlar{\i}n birka\c{c}{\i}n{\i} ayn{\i} anda uyguluyor. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{document}
